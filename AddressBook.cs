@@ -73,5 +73,42 @@ namespace AddressBookUsingDOTNet
         }
 
 
+        public void GetNameById(int id)
+        {
+            List<Contact> contactslist = new List<Contact>();
+            sqlConnection.Open();
+            string query = "SELECT * FROM contacts";
+            SqlCommand view = new SqlCommand(query, sqlConnection);
+            SqlDataReader reader = view.ExecuteReader();
+            while (reader.Read())
+            {
+                Contact contact = new Contact()
+                {
+                    ID = (int)reader["ID"],
+                    FirstName = (string)reader["FirstName"],
+                    LastName = (string)reader["LastName"],
+                    Email = (string)reader["Email"],
+                    PhoneNumber = (string)reader["PhoneNumber"],
+                    City = (string)reader["City"],
+                    SState = (string)reader["SState"],
+                    Zip = (string)reader["Zip"]
+                };
+                contactslist.Add(contact);
+            }
+
+            foreach (Contact contact in contactslist)
+            {
+                if (contact.ID == id)
+                {
+                    Console.WriteLine($"ID:- {contact.ID}\t Name:- {contact.FirstName}\t LastName:- {contact.LastName} \tPhoneNumber:- {contact.PhoneNumber}  \tEmail:- {contact.Email} \tCity:- {contact.City} \tState:- {contact.SState} \tPinCode:- {contact.Zip}");
+                }
+            }
+
+
+            sqlConnection.Close();
+
+        }
+
+
     }
 }
