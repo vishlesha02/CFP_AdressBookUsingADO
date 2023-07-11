@@ -21,10 +21,11 @@ namespace AddressBookUsingDOTNet
                 Console.WriteLine("Press 3 to Display Single Contact");
                 Console.WriteLine("Press 4 to Delete Contact");
                 Console.WriteLine("Press 5 to Edit Contact");
+                Console.WriteLine("Press 6 to Add Contact by Procedure");
 
-            
 
-            Console.WriteLine("Enter your choice");
+
+                Console.WriteLine("Enter your choice");
             int choice=int.Parse(Console.ReadLine());
            
                 switch (choice)
@@ -33,19 +34,24 @@ namespace AddressBookUsingDOTNet
                         {
                             Console.WriteLine("Enter Firstname: - ");
                             string first = Console.ReadLine();
+
                             Console.WriteLine("Enter LastName");
                             string last = Console.ReadLine();
+
                             Console.WriteLine("Enter PhoneNumber");
                             string phno = Console.ReadLine();
 
                             Console.WriteLine("Enter Email:- ");
                             string email = Console.ReadLine();
+
                             Console.WriteLine("Enter City:- ");
                             string city = Console.ReadLine();
-                            Console.WriteLine("Enter Pincode:- ");
-                            string zipcode = Console.ReadLine();
+                           
                             Console.WriteLine("Enter State:- ");
                             string state = Console.ReadLine();
+
+                            Console.WriteLine("Enter Pincode:- ");
+                            string zipcode = Console.ReadLine();
 
                             Contact contact = new Contact(first, last, phno, email, city, state, zipcode);
                             /*{
@@ -81,6 +87,54 @@ namespace AddressBookUsingDOTNet
                             obj.delete(id);
                             break;
                         }
+                    case 5:
+                        {
+                            Console.WriteLine("Enter name ");
+                            string name = Console.ReadLine();
+                            Console.WriteLine("Enter Email");
+                            string email = Console.ReadLine();
+
+                            obj.Edit(name, email);
+                            break;
+                        }
+                    case 6:
+                        {
+                            Console.WriteLine("Enter Firstname: - ");
+                            string first = Console.ReadLine();
+
+                            Console.WriteLine("Enter LastName: - ");
+                            string last = Console.ReadLine();
+
+                            Console.WriteLine("Enter PhoneNumber: - ");
+                            string phno = Console.ReadLine();
+
+                            Console.WriteLine("Enter Email: - ");
+                            string email = Console.ReadLine();
+
+                            Console.WriteLine("Enter City: - ");
+                            string city = Console.ReadLine();
+
+                            Console.WriteLine("Enter State: - ");
+                            string state = Console.ReadLine();
+
+                            Console.WriteLine("Enter Pincode: - ");
+                            string zipcode = Console.ReadLine();
+
+                            Contact contact = new Contact(first, last, phno, email, city, state, zipcode);
+                            /*{
+                                FirstName = FirstName,
+                                LastName = LastName,
+                                PhoneNumber = PhoneNumber,
+                                Email = Email,
+                                City = City,
+                                SState = State,
+                                Zip = Zip,
+                            };*/
+                            obj.AddByStoreProcedure(contact);
+                            break;
+
+                        }
+                    
 
                     default:
                         break;

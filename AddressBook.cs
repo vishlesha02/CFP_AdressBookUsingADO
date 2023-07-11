@@ -123,6 +123,62 @@ namespace AddressBookUsingDOTNet
             sqlConnection.Close();
         }
 
+        public void Edit(string name, string email)
+        {
+            sqlConnection.Open();
+            string query = $"UPDATE contacts SET Email= '{email}' WHERE FirstName = '{name}'";
+
+            SqlCommand update = new SqlCommand(query, sqlConnection);
+            int result = update.ExecuteNonQuery();
+
+            if (result > 0)
+            {
+                Console.WriteLine($"{result} is affected");
+            }
+
+            sqlConnection.Close();
+
+        }
+
+        public void AddByStoreProcedure(Contact contact)
+        {
+            try 
+            {
+                sqlConnection.Open();
+
+                string query = "AddContact";
+                SqlCommand cmd = new SqlCommand(query, sqlConnection);
+                cmd.CommandType=System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@FirstName",contact.FirstName);
+                cmd.Parameters.AddWithValue("@LastName",contact.LastName);
+                cmd.Parameters.AddWithValue("@Email",contact.Email);
+                cmd.Parameters.AddWithValue("@PhoneNumber",contact.PhoneNumber);
+                cmd.Parameters.AddWithValue("@City",contact.City);
+                cmd.Parameters.AddWithValue("@SState",contact.SState);
+                cmd.Parameters.AddWithValue("@Zip",contact.Zip);
+                int result = cmd.ExecuteNonQuery();
+                if (result > 0)
+                {
+                    Console.WriteLine($"{result} is affected");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+
+            }
+            finally 
+            {
+                sqlConnection.Close();
+            }
+        
+        }
+
+       
+
+
 
     }
 }

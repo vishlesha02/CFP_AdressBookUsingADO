@@ -20,3 +20,21 @@ DELETE FROM contacts WHERE FirstName = NULL;
 
 ALTER TABLE contacts
 ADD ID int Identity(1,1);
+
+-----------------AddByStoreProcedure-----------------------
+
+CREATE PROCEDURE AddContact
+	@FirstName VARCHAR(50),
+	@LastName VARCHAR(50),
+	@Email VARCHAR(50),
+	@PhoneNumber VARCHAR(50),
+	@City VARCHAR(50),
+	@SState VARCHAR(50),
+	@Zip VARCHAR(50)
+
+	AS
+	BEGIN
+		INSERT INTO Contacts VALUES(@FirstName,@LastName,@Email,@PhoneNumber,@City,@SState,@Zip) 
+	END
+
+	EXEC AddContact
