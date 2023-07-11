@@ -38,3 +38,12 @@ CREATE PROCEDURE AddContact
 	END
 
 	EXEC AddContact
+
+	--------------------DisplayByStoreProcedure-------------
+	CREATE PROCEDURE DisplayContact
+		AS
+		BEGIN
+			SELECT * FROM contacts
+		END
+
+		EXEC DisplayContact

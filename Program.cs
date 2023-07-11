@@ -22,11 +22,10 @@ namespace AddressBookUsingDOTNet
                 Console.WriteLine("Press 4 to Delete Contact");
                 Console.WriteLine("Press 5 to Edit Contact");
                 Console.WriteLine("Press 6 to Add Contact by Procedure");
-
-
+                Console.WriteLine("Press 7 to Display Contact by Procedure");
 
                 Console.WriteLine("Enter your choice");
-            int choice=int.Parse(Console.ReadLine());
+                int choice=int.Parse(Console.ReadLine());
            
                 switch (choice)
                 {
@@ -134,8 +133,13 @@ namespace AddressBookUsingDOTNet
                             break;
 
                         }
-                    
 
+                    case 7:
+                        {
+                            obj.DisplayByStoreProcedure();
+                            break;
+                        }
+                    
                     default:
                         break;
                 }
