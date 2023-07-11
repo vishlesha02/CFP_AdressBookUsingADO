@@ -60,7 +60,14 @@ namespace AddressBookUsingDOTNet
                             obj.AddContact(contact);
                             break;
                         }
-                    
+
+                    case 2:
+                        {
+                            obj.Display();
+                            break;
+
+                        }
+
                     default:
                         break;
                 }
