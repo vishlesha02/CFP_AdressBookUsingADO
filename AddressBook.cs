@@ -109,6 +109,20 @@ namespace AddressBookUsingDOTNet
 
         }
 
+        public void delete(int id)
+        {
+            sqlConnection.Open();
+            string query = $"Delete from contacts where Id = {id}";
+            SqlCommand delete = new SqlCommand(query, sqlConnection);
+            int result = delete.ExecuteNonQuery();
+
+            if (result < 0)
+            {
+                Console.WriteLine($"{result} rows affected");
+            }
+            sqlConnection.Close();
+        }
+
 
     }
 }

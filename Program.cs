@@ -74,6 +74,13 @@ namespace AddressBookUsingDOTNet
                             obj.GetNameById(id);
                             break;
                         }
+                    case 4:
+                        {
+                            Console.WriteLine("Enter id:- ");
+                            int id = int.Parse(Console.ReadLine());
+                            obj.delete(id);
+                            break;
+                        }
 
                     default:
                         break;
