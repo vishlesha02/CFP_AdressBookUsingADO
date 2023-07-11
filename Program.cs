@@ -81,7 +81,16 @@ namespace AddressBookUsingDOTNet
                             obj.delete(id);
                             break;
                         }
+                    case 5:
+                        {
+                            Console.WriteLine("Enter name ");
+                            string name = Console.ReadLine();
+                            Console.WriteLine("Enter Email");
+                            string email = Console.ReadLine();
 
+                            obj.Edit(name, email);
+                            break;
+                        }
                     default:
                         break;
                 }

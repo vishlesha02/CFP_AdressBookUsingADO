@@ -123,6 +123,23 @@ namespace AddressBookUsingDOTNet
             sqlConnection.Close();
         }
 
+        public void Edit(string name, string email)
+        {
+            sqlConnection.Open();
+            string query = $"UPDATE contacts SET Email= '{email}' WHERE FirstName = '{name}'";
+
+            SqlCommand update = new SqlCommand(query, sqlConnection);
+            int result = update.ExecuteNonQuery();
+
+            if (result > 0)
+            {
+                Console.WriteLine($"{result} is affected");
+            }
+
+            sqlConnection.Close();
+
+        }
+
 
     }
 }
